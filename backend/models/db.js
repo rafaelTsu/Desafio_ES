@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const nome_db = 'projeto'
 const username = 'postgres'
 const senha_db = '123'
-const host = 'localhost'
+const host = 'postgres'
 const dialect = 'postgres'
 
 const sequelize = new Sequelize(nome_db, username, senha_db, {
