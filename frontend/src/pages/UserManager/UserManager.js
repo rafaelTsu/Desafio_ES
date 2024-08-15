@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
@@ -54,21 +53,35 @@ function UserManager() {
     }
 
     return (
-        <div>
-        <h2>User Manager</h2>
-        {users.length > 0 ? (
-            <ul>
-            {users.map((userEdit) => (
-                <div>
-                {userEdit.email} - {userEdit.role}
-                <button onClick={() => handleEditClick(userEdit)}>Editar</button>
-                </div>
-            ))}
-            </ul>
-        ) : (
-            <p>Nenhum usuário cadastrado!</p>
-        )}
-        <Link to="/register">Adicionar usuário</Link>
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Gerenciamento de Usuários</h2>
+            {users.length > 0 ? (
+                <ul className="list-group">
+                {users.map((userEdit) => (
+                    <li className="list-group-item d-flex justify-content-between align-items-center" key={userEdit.email}>
+                    <div>
+                        <span className="fw-bold">{userEdit.email}</span> - <span className="text-muted">{userEdit.role}</span>
+                    </div>
+                    <button 
+                        className="btn btn-outline-primary btn-sm"
+                        onClick={() => handleEditClick(userEdit)}
+                    >
+                        Editar
+                    </button>
+                    </li>
+                ))}
+                </ul>
+            ) : (
+                <p className="text-center text-muted">Nenhum usuário cadastrado!</p>
+            )}
+            <div className="d-flex justify-content-center mt-4">
+                <button 
+                className="btn btn-success" 
+                onClick={() => navigate("/register")}
+                >
+                Registrar Usuário
+                </button>
+            </div>
         </div>
     );
 }

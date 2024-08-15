@@ -66,42 +66,50 @@ function EditUser() {
     }
 
     return (
-        <div>
-            <h2>Editar Usuário</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {success && <p style={{ color: 'green' }}>Usuário editado com sucesso!</p>}
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Editar Usuário</h2>
+            {error && <p className="text-danger text-center">{error}</p>}
+            {success && <p className="text-success text-center">Usuário editado com sucesso!</p>}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+                <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control"
+                    required
+                />
                 </div>
-                <div>
-                    <label>Senha:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                <div className="mb-3">
+                <label htmlFor="password" className="form-label">Senha:</label>
+                <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="form-control"
+                    required
+                />
                 </div>
-                <div>
-                    <label>Role:</label>
-                    <select
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
-                        required
-                    >
-                        <option value="admin">Admin</option>
-                        <option value="procurador">Procurador</option>
-                        <option value="assessor">Assessor</option>
-                    </select>
+                <div className="mb-3">
+                <label htmlFor="role" className="form-label">Role:</label>
+                <select
+                    id="role"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="form-select"
+                    required
+                >
+                    <option value="admin">Admin</option>
+                    <option value="procurador">Procurador</option>
+                    <option value="assessor">Assessor</option>
+                </select>
                 </div>
-                <button type="submit">Salvar</button>
+                <div className="d-flex justify-content-center">
+                <button type="submit" className="btn btn-primary">Salvar</button>
+                </div>
             </form>
         </div>
     );
